@@ -4,6 +4,7 @@ import './App.css';
 import Navbar from './components/navbar/Navbar';
 
 import MovieList from './components/movielist/MovieList';
+import FooterApp from './components/footer/Footer';
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
     <div className="movieapp">
       <Navbar></Navbar>
       <MovieList />
+      <FooterApp />
     </div>
   )
 }
