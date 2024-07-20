@@ -1,0 +1,71 @@
+.movie_card_wrapper {
+    height: 300px;
+    max-width: 200px;
+    margin: 15px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0px 0px 40px #95959508;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.movie_card_wrapper:hover {
+    transform: scale(1.08);
+}
+.poster_wrapper img {
+    width: 100%;
+    height: 100%;
+}
+
+.movie_card_details {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.movie_card_wrapper:hover .movie_card_details {
+    opacity: 1;
+}
+
+h2.movie_name {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.relasedate_rating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fee400;
+    font-size: 12px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.content_card {
+    font-size: 14px;
+    line-height: 16px;
+    color: #ffffff;
+}
+
+p.rating_card img {
+    max-width: 15px;
+    height: 15px;
+    margin-left: 10px;
+}
+p.rating_card > span {
+    position: relative;
+    top: 1px;
+}
+p.rating_card {
+    display: flex;
+    align-items: center;
+}
