@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './MovieList.css';
 import Fire from '../../assets/images/fire.png'
 import MovieCard from './MovieCard';
+import RatingFilter from './RatingFilter';
 
 const MovieList = () => {
 
@@ -12,6 +13,14 @@ const MovieList = () => {
 //   },[])
 
 const [movies, setMovies] = useState([])
+const [filtermovies, setFilterMovies] = useState([])
+
+const [maxrate, setMaxRate] = useState(0);
+
+const [sort, setSort] = useState({
+    by: "default",
+    order: "asc"
+})
 
 useEffect(() => {
     fetcharMovies();
@@ -24,37 +33,56 @@ useEffect(() => {
     const data = await response.json();
     // console.log(data);
     setMovies(data.results);
+    setFilterMovies(data.results)
   }
 
   
+  const handelRating = (rate) => {
+    // console.log('Rate', rate);
+    if(rate === maxrate){
+        setMaxRate(0)
+        setFilterMovies(movies)
+    }else{
+        setMaxRate(rate);
+        // console.log('maxrate', maxrate)
+        const rateMovie = movies.filter((movie) => movie.vote_average >= rate);
+        setFilterMovies(rateMovie);
+    }
+    
+    
+  }
+
+
+  const handelsortvalue = (e) => {
+    const {name , value} = e.target;
+    setSort((prev) => ({...prev, [name]:value}))
+  }
+  console.log(sort)
+
 
   return (
     <section className='movie_list'>
         <header className='movie_list_header'>
             <h2 className="movie_list_heading">
-            Popular <img src={Fire} alt="fire emoji" className='navbar_emoji' />
+                Popular <img src={Fire} alt="fire emoji" className='navbar_emoji' />
             </h2>
 
             <div className="movie_list_fs">
-                <ul className="movie_filter">
-                    <li className="movie_filter_item active">8+ Star</li>
-                    <li className="movie_filter_item">7+ Star</li>
-                    <li className="movie_filter_item">6+ Star</li>
-                </ul>
-                <select name="" id="" className='movie_sorting'>
-                    <option value="">SortBy</option>
-                    <option value="">Date</option>
-                    <option value="">Rating</option>
+                <RatingFilter maxrate={maxrate} clickRating={handelRating} ratings={[8,7,6]} />
+                <select name="by" onChange={handelsortvalue} value={sort.by} id="" className='movie_sorting'>
+                    <option value="default">SortBy</option>
+                    <option value="release_date">Date</option>
+                    <option value="rvote_average">Rating</option>
                 </select>
-                <select name="" id="" className="movie_sorting">
-                    <option value="">Ascending</option>
-                    <option value="">Descending</option>
+                <select name="order" onChange={handelsortvalue} value={sort.order} id="" className="movie_sorting">
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
                 </select>
             </div>
         </header>
         <div className="movie_list_card">
             {
-                movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
+                filtermovies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
             }
         </div>
     </section>

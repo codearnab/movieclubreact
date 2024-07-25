@@ -24,6 +24,7 @@ ul.movie_filter {
 li.movie_filter_item {
     list-style: none;
     padding: 0px 10px;
+    cursor: pointer;
 }
 
 select.movie_sorting {
