@@ -1,0 +1,10 @@
+.footerWrapper {
+    text-align: center;
+    padding: 10px 0px;
+    margin-top: 20px;
+    border-top: 1px solid var(--all_color);
+}
+
+.footerWrapper p {
+    color: var(--all_color);
+}

@@ -6,6 +6,18 @@
   font-family: "PoppinsSemiBold";
   src: url("./assets/fonts/Poppins-SemiBold.woff2");
 }
+
+:root {
+  --bg_main: #1c1c1c;
+  --all_color: #ffffff;
+  --seconday_color: yellow
+}
+[theme-chnage="light"] {
+  --bg_main: #ffffff;
+  --all_color: #1c1c1c;
+  --seconday_color: #1c1c1c
+}
+
 *{
   margin: 0px;
   padding: 0px;
@@ -13,8 +25,8 @@
 }
 
 body {
-  background-color: #1c1c1c;
-  color: #ffffff;
+  background-color: var(--bg_main);
+  color: var(--all_color);
   font-family: "PoppinsSemiBold", sans-serif;
 }
 

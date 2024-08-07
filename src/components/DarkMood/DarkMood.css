@@ -1,0 +1,72 @@
+.darkMoodLable {
+    width: 70px;
+    height: 30px;
+    border-radius: 50px;
+    display: block;
+    box-shadow: inset 0px 5px 10px rgba(0,0,0,0.4), inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    background: #ebebeb;
+    position: relative;
+    transition: 0.3s;
+}
+
+.darkMoodLable:after {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-image: linear-gradient(90deg,#d5bc07, rgb(255 239 162));
+    top: 5px;
+    left: 7px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+#darkMoodToggle:checked + .darkMoodLable{
+    background-color: #1c1c1c;
+}
+#darkMoodToggle:checked + .darkMoodLable:after {
+    left: unset;
+    right: 7px;
+    background-image: linear-gradient(90deg, rgb(255 239 162), #d5bc07);
+    transition: all 0.3s ease-in-out;
+}
+
+input#darkMoodToggle {
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.darkMoodLable:active::after{
+    width: 30px;
+}
+
+
+.darkIconWrapper {
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    position: relative;
+    z-index: 999999;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 9px;
+}
+
+.darkIconWrapper svg {
+    max-width: 15px;
+    max-height: 15px;
+}
+
+#darkMoodToggle:checked + .darkMoodLable svg.moonIcon path{
+    /* fill: #ffffff; */
+    stroke: #ffffff;
+}
+
+#darkMoodToggle:checked + .darkMoodLable svg.sunIcon path{
+    /* fill: #ffffff; */
+    stroke: #ffffff;
+}
